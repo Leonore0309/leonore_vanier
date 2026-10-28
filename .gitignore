@@ -1,0 +1,65 @@
+# --- Système ---
+.DS_Store
+._*
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# --- OneDrive / synchronisation ---
+.849C9593-D756-4E56-8D6E-42412F2A707B
+*.tmp
+*.temp
+*.bak
+*.orig
+*~
+*conflicted copy*
+*-DESKTOP-*
+*-PC.*
+
+# --- Fichiers Office (verrous et temporaires) ---
+~$*
+.~lock.*#
+
+# --- Éditeurs / IDE ---
+.vscode/
+.idea/
+.cursor/
+.cursorignore
+*.swp
+*.swo
+.history/
+
+# --- Claude Code (réglages locaux et mémoire personnelle) ---
+.claude/settings.local.json
+.claude/worktrees/
+CLAUDE.local.md
+
+# --- Logs et caches ---
+*.log
+npm-debug.log*
+.cache/
+.tmp/
+
+# --- Dépendances et builds (non utilisés, par précaution) ---
+node_modules/
+dist/
+build/
+.env
+.env.*
+
+# --- Sources lourdes hors site (à garder hors du dépôt) ---
+# Originaux haute définition, montages et exports : seul le WebP optimisé
+# de assets/img/ est publié.
+*.psd
+*.ai
+*.prproj
+*.aep
+*.drawio.bak
+originaux/
+sources/
+rushes/
+*.mov
+*.mp4
+*.wav
