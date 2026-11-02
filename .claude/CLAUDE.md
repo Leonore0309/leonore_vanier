@@ -17,7 +17,7 @@ Site statique (HTML, CSS, JavaScript vanilla), sans framework, sans build, dépl
 - Information manquante : mettre `null` (ou liste vide) dans `data.js` pour afficher « À compléter ». **Ne jamais inventer** de contenu (synopsis, crédits, chiffres, noms). Mettre à jour `AMELIORATIONS.md` (visuels et chiffres à fournir, page par page) en parallèle.
 - `showTodos: false` uniquement pour la version finale.
 - Images : renseigner `src`, `w`, `h` réels et un `alt` descriptif en français. 1 600 px de large conseillés.
-- Vidéos YouTube : charger le lecteur au clic uniquement, pas de lecture automatique.
+- Vidéos YouTube / TikTok : lien vers la vidéo (nouvel onglet), pas d’iframe ni de lecteur intégré, pas de lecture automatique du son (voir « Visuels animés »).
 - Typographie française : espaces insécables avant `: ; ? ! %` (gérées par `nb()` dans `main.js`), apostrophes typographiques ’, guillemets « ».
 - Le téléphone n’est volontairement pas affiché sur le site.
 - Accessibilité : lien d’évitement, `lang="fr"`, contrastes, navigation clavier, balises sémantiques.
@@ -51,7 +51,7 @@ Voir le README : nouvelle entrée dans `SITE.projects` (et `data.en.js`), puis u
 `python -m http.server 8000` puis http://localhost:8000/. Le dossier est dans OneDrive : une image peut être servie de façon intermittente pendant la synchronisation (les réponses de plus de 64 Ko peuvent aussi caler en boucle locale sur certaines machines : recharger).
 
 - **CV** : non publié sur le site. Le PDF reste dans `sources/cv/`. Tout PDF publié dans `assets/docs/` : jamais de numéro de téléphone (texte, lien, métadonnées).
-- **`sources/`** (ignoré par git, non publié) : originaux lourds (`videos/`, `photos-hd/`, `portraits-acting/`, `adam/`, `demo-voix/`, `cv/`). `.gitignore` exclut `*.mp4` mais ré-inclut `assets/video/*.mp4`.
+- **`sources/`** (ignoré par git, non publié) : originaux lourds (`videos/`, `photos-hd/`, `portraits-acting/`, `adam/`, `demo-voix/`, `cv/`, `logos/`). `.gitignore` exclut `*.mp4` mais ré-inclut `assets/video/*.mp4`.
 - **Accueil** : page d’entrée seule, sans en-tête ni pied de page ; MON PORTFOLIO mène à `projets/` (citation, mosaïque, plus de showreel). Nom, titre et bouton en Cormorant, en majuscules ; le tout tient sur l’écran sans défiler (classe `landing--v2`). Le nom du menu et « Tous les projets » mènent aussi à `projets/`.
 - **En-tête** : thème et langue (`.site-header__tools`) à droite du menu.
 - **Vidéos des pages projets** : `hero.loop`, boucle en continu (`initLoops`). Les encarts (liens) sont dans la colonne `.essentials`, sous le dernier bloc de texte.
