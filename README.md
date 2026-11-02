@@ -118,8 +118,9 @@ Le dépôt est `Leonore0309/leonore_vanier`. Rien n’est publié automatiquemen
 Le fichier `.nojekyll` désactive Jekyll : ne pas le supprimer.
 
 - **Autre nom de dépôt** : adapter la constante `REPO` dans `404.html`.
-- **Référencement** : `tools/generate_pages.py` pose `canonical`, `og:url`, `og:image`, `hreflang`, les données structurées `Person` (accueil) et génère `sitemap.xml`. L’adresse publique est la constante `BASE` du générateur : à changer, puis `python tools/generate_pages.py`, si un nom de domaine est acheté plus tard. Le fichier `robots.txt` ne peut être posé qu’à la racine d’un domaine : sans objet sur une adresse GitHub ; déclarer le sitemap dans Google Search Console.
-- **Domaine personnalisé** : non configuré ; les chemins relatifs resteront valides.
+- **Référencement** : `tools/generate_pages.py` pose `canonical`, `og:url`, `og:image`, `hreflang`, les données structurées `Person` (accueil) et génère `sitemap.xml`. L’adresse de référence est la constante `BASE` du générateur (copie du site de la compagnie) : à changer, puis `python tools/generate_pages.py`. Le fichier `robots.txt` ne peut être posé qu’à la racine d’un domaine : sans objet ici ; déclarer le sitemap dans Google Search Console.
+- **Copie sur le site de la compagnie** : adresse principale <https://lacompagniesensibleindocile.fr/leonore_vanier/>. Ce dépôt reste la version de référence ; l’adresse GitHub Pages reste active. Pour mettre la copie à jour : `python tools/generate_pages.py`, puis `python tools/publish_cie.py <clone de ACO-LV/Cie-Site-web>`, puis commit et push dans ce clone (le script ne fait ni l’un ni l’autre). Ne jamais modifier le dossier `leonore_vanier/` du site de la compagnie à la main.
+- **Domaine personnalisé** : aucun sur ce dépôt ; les chemins relatifs restent valides.
 - **Polices** : pour une conformité RGPD stricte, les héberger dans `assets/fonts/`.
 - **Originaux** : portraits, visuels, films, démo voix d’origine et anciennes versions sont rangés dans `sources/` (`videos/`, `photos-hd/`, `portraits-acting/`, `adam/`, `demo-voix/`, `cv/`), dossier **ignoré par git** donc jamais publié.
 

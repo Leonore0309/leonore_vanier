@@ -10,8 +10,8 @@ import datetime, json, os, sys
 
 repo = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NAME = "Léonore Vanier"
-# Adresse publique du site (GitHub Pages). À changer ici si un nom de domaine est acheté plus tard.
-BASE = "https://leonore0309.github.io/leonore_vanier/"
+# Adresse publique de référence : la copie hébergée par le site de la compagnie (voir tools/publish_cie.py).
+BASE = "https://lacompagniesensibleindocile.fr/leonore_vanier/"
 OG_IMAGE = BASE + "assets/img/a-propos/leonore-tournage.webp"
 # Pour les données structurées de l’accueil (mêmes liens que data.js)
 SAME_AS = [

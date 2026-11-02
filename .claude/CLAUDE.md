@@ -56,5 +56,6 @@ Voir le README : nouvelle entrée dans `SITE.projects` (et `data.en.js`), puis u
 - **En-tête** : thème et langue (`.site-header__tools`) à droite du menu.
 - **Vidéos des pages projets** : `hero.loop`, boucle en continu (`initLoops`). Les encarts (liens) sont dans la colonne `.essentials`, sous le dernier bloc de texte.
 - **Référencement** : généré par `tools/generate_pages.py` (constante `BASE`, canonical, hreflang, JSON-LD, `sitemap.xml`) ; ne jamais éditer les coquilles à la main.
+- **Copie sur le site de la compagnie** : adresse principale https://lacompagniesensibleindocile.fr/leonore_vanier/ (GitHub Pages reste actif). Ce dépôt est la version de référence ; `python tools/publish_cie.py <clone ACO-LV/Cie-Site-web>` remplace le dossier `leonore_vanier/` du clone. Pas de commit/push sans demande explicite.
 - **Visuels animés** : liens `<a class="player">` vers la vidéo (nouvel onglet, `hero.url`), sans bouton play ni iframe ; bande-démo vers Filmmakers (le titre YouTube contient un numéro de téléphone). `AMELIORATIONS.md` est privé (ignoré par git).
 - `showTodos: false` : les « à compléter » sont masqués ; les manques sont dans `AMELIORATIONS.md`.
