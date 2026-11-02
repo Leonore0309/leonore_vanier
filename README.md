@@ -1,95 +1,141 @@
 # Portfolio — Léonore Vanier
 
-Site statique (HTML, CSS, JavaScript sans framework ni compilation) présentant le portfolio de Léonore Vanier, Creative Producer · Cheffe de projet vidéo. Compatible GitHub Pages.
+Site statique (HTML, CSS, JavaScript sans framework ni compilation) présentant le portfolio de Léonore Vanier, productrice artistique, Creative Producer et cheffe de projet vidéo. Compatible GitHub Pages. Disponible en **français** (racine) et en **anglais** (`/en/`).
 
-Les éléments encore à fournir sont listés dans [CONTENT_TODO.md](CONTENT_TODO.md). Dans la prévisualisation, ils apparaissent comme des encadrés pointillés « À compléter ».
+Les éléments encore à fournir sont listés dans `AMELIORATIONS.md`, un mémo **privé** conservé sur l’ordinateur (ignoré par git, jamais publié). Avec `showTodos: true`, ils apparaissent comme des encadrés pointillés « À compléter ».
 
-## Prévisualiser en local
+## Lancer le site en local
 
-Depuis ce dossier, au choix :
+Depuis ce dossier :
 
 ```bash
 python -m http.server 8000
 ```
 
-puis ouvrir <http://localhost:8000/>. Autres options : l’extension « Live Server » de VS Code (clic droit sur `index.html` → *Open with Live Server*), ou simplement un double-clic sur `index.html` (le site fonctionne aussi en `file://`).
+puis ouvrir <http://localhost:8000/> (français) ou <http://localhost:8000/en/> (anglais). Autres options : l’extension « Live Server » de VS Code, ou un double-clic sur `index.html`.
 
-> **Dossier OneDrive** : ce dépôt se trouve dans OneDrive. La synchronisation peut ralentir ou interrompre la lecture de fichiers récents (une image a ainsi été servie de façon intermittente pendant les tests). En cas d’image qui ne s’affiche pas en local, patienter la fin de la synchronisation ou recharger la page.
+> **Dossier OneDrive** : la synchronisation peut ralentir ou interrompre la lecture de fichiers récents ou lourds : si une image ne s’affiche pas en local, recharger la page. Cela n’a aucune incidence sur GitHub Pages.
+
+## Où modifier les textes
+
+| Fichier | Contenu |
+|---|---|
+| [assets/js/data.js](assets/js/data.js) | **tout le contenu en français**, avec un sommaire commenté en tête |
+| [assets/js/data.en.js](assets/js/data.en.js) | **tout le contenu en anglais** : mêmes clés, seuls les textes diffèrent |
+
+Sections de `data.js` : 1. identité et réglages (`showTodos`, `style`, `styleSwitcher`) · 2. société (logo, lien) · 3. navigation, rubriques et libellés d’interface (`ui`) · 4. projets · 5. accueil · 6. à propos · 7. acting · 8. contacts.
+
+Règles utiles :
+
+- Une valeur `null` (ou une liste vide) affiche un encadré « À compléter ». Mettre `showTodos: false` pour la version finale.
+- Ne jamais inventer d’information : mettre `null` et l’ajouter à `AMELIORATIONS.md`.
+- **Anglais** : `data.en.js` n’a pas besoin de répéter les noms, chiffres, liens ni chemins d’images ; les tableaux sont fusionnés élément par élément, dans le même ordre que `data.js`. Si une information change dans `data.js`, répercuter le texte dans `data.en.js`.
+- **Images** : déposer dans `assets/img/<projet>/` (WebP, 1 200 à 1 600 px de large), puis déclarer `src`, `w`, `h` (dimensions réelles) et `alt`. Les originaux lourds restent hors du dépôt.
+- **Crédits photo** : champ `caption` (« Photo : Nom ») des images de galerie, `credit` des portraits et des photos d’accueil.
+- **Vidéos** : renseigner l’identifiant YouTube (`hero.id`, la partie après `v=`). Le lecteur ne se charge qu’au clic, sans lecture automatique.
+- **Boucles animées** : voir « Boucles vidéo muettes » ci-dessous.
 
 ## Structure
 
 ```
-index.html                  accueil (encart à propos + mosaïque)
-a-propos/ acting/ contacts/ pages éditoriales
-fiction/                    liste Fiction (2 projets)
-  le-controle-sanitaire/    fiche projet
-  adam/                     fiche projet (à compléter)
-ia/                         Life on Xenia (projet unique : affiché directement)
-spectacles-vivants/         LE BAIN (projet unique : affiché directement)
-audio/                      productions audio (8 fiches, ancres #slug)
+index.html                  page d’entrée (photo, nom, MON PORTFOLIO)
+projets/                    citation et mosaïque des projets
+sitemap.xml                 plan du site (généré)
+a-propos/ acting/ contacts/ audio/ ia/ spectacles-vivants/
+fiction/                    liste Fiction, puis une fiche par projet
+  le-controle-sanitaire/ adam/ sous-ta-peau-brulante/
+en/                         même arborescence, en anglais (en/fiction/adam/, …)
 404.html                    page d’erreur autonome
-assets/css/style.css        tous les styles
-assets/js/data.js           TOUT le contenu (textes, rôles, liens, médias)
-assets/js/main.js           rendu des pages, menu mobile, lecteurs vidéo
-assets/img/<projet>/        médias optimisés (WebP)
+assets/css/style.css        tous les styles (variables sur :root)
+assets/js/data.js           contenu français
+assets/js/data.en.js        contenu anglais
+assets/js/main.js           rendu des pages, langues, menu mobile, lecteurs, boucles
+assets/img/                 images optimisées (WebP) ; logo dans assets/img/brand/
+assets/video/               boucles vidéo muettes (MP4)
+assets/audio/               démo voix (MP3 sans métadonnées personnelles)
+tools/generate_pages.py     génère toutes les pages (FR et EN) : `python tools/generate_pages.py`
 ```
 
-Chaque dossier contient un vrai `index.html` : il n’y a pas de routage côté client, donc aucune erreur 404 au rechargement d’une page. Tous les chemins sont relatifs : le site fonctionne à la racine d’un domaine comme dans un sous-dossier GitHub Pages.
+Chaque dossier contient un vrai `index.html` : aucune erreur 404 au rechargement. Tous les chemins sont relatifs : le site fonctionne à la racine d’un domaine comme dans un sous-dossier GitHub Pages.
 
-## Modifier les contenus
+## Identité visuelle
 
-**Tout se passe dans [assets/js/data.js](assets/js/data.js).**
+- **Deux modes de couleur**, sur la même mise en page « Nuit cinéma » :
+  - **sombre** : fond bleu pétrole presque noir `#03141a` ;
+  - **clair** : ivoire `#f5f1e9`, titres bleu pétrole.
+  Au premier passage, le site suit le réglage clair / sombre de l’appareil ; le bouton soleil / lune de l’en-tête permet de basculer, et le choix est mémorisé. Le petit script du `<head>` (généré par `tools/generate_pages.py`) pose `data-theme` avant l’affichage ; `style.css` (section 11) remappe les variables de palette pour le mode sombre.
+- **Accueil** : la **page d’entrée** (photo à la voiture, activités, bouton **Mon portfolio**) est seule sur la page d’accueil, toujours en ivoire clair, sans menu ; le bouton mène à `projets/` : citation (Mention spéciale, Prix Florent Image 2026) puis mosaïque des projets. Nom, titre et bouton en Cormorant Garamond ; le tout tient sur l’écran sans défiler. Données dans `landing` et `home` (`data.js`).
+- **Typographie** : **Anton** pour les titres (condensée, façon affiche de cinéma, gratuite) ; **Cormorant Garamond** pour le nom dans le menu et la citation ; DM Sans pour le texte. Heading Now est commerciale : pour l’utiliser, fournir les `.woff2` et la licence, déclarer un `@font-face` et changer `--display` dans la section 13 de `style.css`.
+- **Mosaïque** : 2 projets par ligne, visuels 16:9, titre centré ; au survol ou au focus clavier, le **genre** (FICTION, AUDIO, IA, SPECTACLES VIVANTS) en grand puis le **rôle** en petit. Sur téléphone, un bandeau genre + rôle reste visible.
+- **Pages projets courtes** : rôle, chiffres clés, distinctions, **« Mon intervention »** (une ligne), liens importants, galerie, puis synopsis court et distribution sur 3 colonnes. Galeries : paysages en 16:9 sur 2 colonnes, verticales à leur ratio.
+- **À propos** : « Ce que je fais » (grille de 3 colonnes ; un clic sur un item déplie tous ceux de la même ligne), preuves concrètes, domaines, « Mon identité » (Ingénierie · Création · Entrepreneuriat), puis « Exemples d’application ».
+- **Logo Sensible Indocile** : source `assets/img/brand/Logo2026.png` (mode clair) et `logo-sensible-indocile-sombre.webp` / `logo-mark-sombre.webp` (mode sombre, tirés de `Logo2026_black.png`, conservé dans `sources/logos/`) ; aucun fond ni pastille. Chaque logo ouvre https://lacompagniesensibleindocile.fr/ dans un nouvel onglet.
+- **Palette** : ivoire `#f5f1e9`, brun `#302824`, bleu pétrole `#2f4a52`, beige rosé `#ebdcd4`, prune `#654653`, terracotta `#a5573d`.
+- **Animations** : apparition courte (0,3 s), flou subtil au survol, défilement doux vers les projets ; tout est coupé sous `prefers-reduced-motion`.
 
-- **Coordonnées** : `SITE.email`, `SITE.linkedin`. Le téléphone n’est volontairement pas affiché.
-- **Projets** : chaque entrée de `SITE.projects` définit titre, format, rôle, vignette d’accueil (`tile`), média principal (`hero`), présentation (`intro`), contributions, chiffres (`stats`), distinctions (`awards`), galerie, crédits et liens. L’ordre de la liste est l’ordre de la mosaïque d’accueil.
-- **Information manquante** : une valeur `null` (ou une liste vide) affiche un emplacement « À compléter ». Pour renseigner une information, remplacer `null` par la valeur.
-  - Exemple, ADAM : dans `credits`, remplacer `value: null` par `value: "Texte du synopsis"`.
-  - Exemple, audio : `author: null` devient `author: "Nom Prénom"`, `summary: null` devient un texte, `listen: null` devient `{ label: "Écouter sur Audible", url: "https://…" }`. Pour un extrait hébergé dans le dépôt : `extract: "assets/audio/mon-extrait.mp3"`.
-- **Masquer les emplacements** : mettre `showTodos: false` pour la version finale. Vérifier d’abord qu’aucun champ important n’est resté vide.
-- **Images** : déposer les fichiers dans `assets/img/<projet>/` (WebP ou JPEG, 1 600 px de large conseillés) puis les référencer avec `src`, `w`, `h` (dimensions réelles, pour éviter les sauts de mise en page) et un `alt` descriptif.
-- **Vidéos** : renseigner l’identifiant YouTube (`hero.id`, la partie après `v=`). Le lecteur n’est chargé qu’au clic, sans lecture automatique.
-- **Typographie française** : les espaces insécables avant `: ; ? ! %` sont ajoutées automatiquement.
+## Version anglaise
+
+- Les pages anglaises sont dans `en/` ; le bouton « EN / FR » de l’en-tête renvoie vers la page équivalente (le style choisi est conservé). Des liens `hreflang` relient les deux versions.
+- Les libellés d’interface (« Mon rôle », « Voir le projet », pied de page…) sont dans `ui` (`data.js` pour le français, `data.en.js` pour l’anglais).
+- Les pages (françaises et anglaises) sont générées à partir d’un modèle commun : ajouter une ligne à `PAGES` dans `tools/generate_pages.py`, puis lancer `python tools/generate_pages.py` à la racine du dépôt. Aucune autre dépendance.
+
+## Boucles vidéo muettes
+
+Les projets avec vidéo (Le Contrôle sanitaire, Sous ta peau brûlante, LE BAIN, Life on Xenia, bande-démo Acting) affichent une courte boucle animée sans son, en continu dès que le cadre est visible ; le visuel est un **lien** vers la vidéo (nouvel onglet), sans bouton ni lecteur intégré. Coupées avec mouvement réduit ou économie de données. Une boucle se prépare avec FFmpeg (8 s, sans son, pixels carrés) ; dans `data.js`, `hero.loop` et `hero.url`.
+
+- Elles ne sont jamais lues avec « mouvement réduit » ni en mode économie de données ; le fichier n’est chargé qu’à l’approche de l’écran.
+- Fichiers : `assets/video/<projet>.mp4`, déclarés par `tile.loop` (ou `reel.loop`) dans `data.js`.
+- Pour en fabriquer une avec FFmpeg (5 à 8 s, sans son, vignette 3:2, moins de 1 Mo) :
+  ```bash
+  ffmpeg -ss 46 -t 8 -i film.mp4 -an -vf "crop=ih*3/2:ih,scale=960:640,fps=24" -c:v libx264 -crf 29 -pix_fmt yuv420p -movflags +faststart assets/video/mon-projet.mp4
+  ```
+- Les films sources (plusieurs Go) ne doivent **jamais** être dans le dépôt : GitHub refuse les fichiers de plus de 100 Mo. Ils sont conservés dans `sources/videos/` (dossier ignoré par git).
 
 ### Ajouter une création IA (ou tout autre projet)
 
-1. Ajouter une entrée dans `SITE.projects` en copiant celle de Life on Xenia et en changeant `id`, `slug`, `category: "ia"`.
-2. Créer le dossier `ia/<slug>/` avec un `index.html` copié depuis `fiction/adam/index.html`, puis adapter : `data-root="../../"`, `data-section="ia"`, `data-project="<id>"`, `<title>` et description.
-3. C’est tout : dès que la rubrique compte deux projets, `ia/` affiche automatiquement une liste de vignettes au lieu de développer le projet unique, et la navigation « projet précédent / suivant » s’étend. Le nouveau projet apparaît aussi à la fin de la mosaïque d’accueil.
+1. Ajouter une entrée dans `SITE.projects` (`data.js`) en copiant celle de Life on Xenia, et son pendant dans `data.en.js` (même `id`).
+2. Ajouter la page dans `PAGES` de `tools/generate_pages.py` (chemin, `data-project`, titres et descriptions FR/EN), puis lancer `python tools/generate_pages.py`.
+3. Dès que la rubrique compte deux projets, `ia/` affiche une liste de vignettes ; le projet apparaît aussi dans la mosaïque (ou l’index) et dans la navigation précédent / suivant.
 
 ### Ajouter une production audio
 
-Ajouter un objet dans la liste `items` du bon groupe (`trilogie`, `thrillers`, `romances`) de la production « Productions audio ».
+Ajouter un objet dans la liste `items` du bon groupe de la production « Productions audio » (et son pendant dans `data.en.js`).
 
 ## Publier avec GitHub Pages
 
-Le dépôt est `Leonore0309/leonore_vanier`. Rien n’a été publié ni poussé automatiquement.
+Le dépôt est `Leonore0309/leonore_vanier`. Rien n’est publié automatiquement.
 
-1. Vérifier le site en local et relire [CONTENT_TODO.md](CONTENT_TODO.md).
+1. Vérifier le site en local et relire `AMELIORATIONS.md` (mémo privé).
 2. Enregistrer et envoyer les fichiers :
    ```bash
    git add .
-   git commit -m "Portfolio : première version"
+   git commit -m "Portfolio : mise en ligne"
    git push origin main
    ```
 3. Sur GitHub : **Settings → Pages → Build and deployment → Source : Deploy from a branch**, branche `main`, dossier `/ (root)`, puis **Save**.
-4. Après une à deux minutes, le site est disponible à l’adresse <https://leonore0309.github.io/leonore_vanier/>.
+4. Après une à deux minutes : <https://leonore0309.github.io/leonore_vanier/> (français) et <https://leonore0309.github.io/leonore_vanier/en/> (anglais).
 
-Le fichier `.nojekyll` désactive le traitement Jekyll : ne pas le supprimer.
+Le fichier `.nojekyll` désactive Jekyll : ne pas le supprimer.
 
-- **Autre nom de dépôt** : adapter la constante `REPO` dans `404.html` (elle sert uniquement à calculer le lien « Retour à l’accueil »).
-- **Domaine personnalisé** : non configuré. Le cas échéant, ajouter le domaine dans *Settings → Pages* ; les chemins relatifs resteront valides.
-- **Polices** : Cormorant Garamond et DM Sans sont chargées depuis Google Fonts. Pour une conformité RGPD stricte, les télécharger et les héberger dans `assets/fonts/` (remplacer le `<link>` Google Fonts des pages et ajouter des `@font-face` dans `style.css`).
+- **Autre nom de dépôt** : adapter la constante `REPO` dans `404.html`.
+- **Référencement** : `tools/generate_pages.py` pose `canonical`, `og:url`, `og:image`, `hreflang`, les données structurées `Person` (accueil) et génère `sitemap.xml`. L’adresse publique est la constante `BASE` du générateur : à changer, puis `python tools/generate_pages.py`, si un nom de domaine est acheté plus tard. Le fichier `robots.txt` ne peut être posé qu’à la racine d’un domaine : sans objet sur une adresse GitHub ; déclarer le sitemap dans Google Search Console.
+- **Domaine personnalisé** : non configuré ; les chemins relatifs resteront valides.
+- **Polices** : pour une conformité RGPD stricte, les héberger dans `assets/fonts/`.
+- **Originaux** : portraits, visuels, films, démo voix d’origine et anciennes versions sont rangés dans `sources/` (`videos/`, `photos-hd/`, `portraits-acting/`, `adam/`, `demo-voix/`, `cv/`), dossier **ignoré par git** donc jamais publié.
 
 ## Choix techniques
 
-- HTML sémantique, lien d’évitement, navigation clavier, focus visibles, textes alternatifs.
-- `prefers-reduced-motion` coupe toutes les transitions et animations.
-- Vignettes : au survol **et** au focus clavier, flou léger du visuel seul, voile et rôle net. Sur écran tactile (`hover: none`), le rôle est affiché en permanence.
-- Images WebP avec dimensions réservées, chargement différé sauf image principale.
-- Lecteurs YouTube (`youtube-nocookie.com`) et TikTok chargés au clic uniquement.
-- Aucun secret ni donnée confidentielle dans le dépôt.
+- HTML sémantique, lien d’évitement, navigation clavier, focus visibles, textes alternatifs, menu mobile plein écran fermable avec Échap.
+- Images WebP avec dimensions réservées ; chargement différé sauf image principale.
+- Lecteurs YouTube (`youtube-nocookie.com`) et TikTok chargés au clic uniquement ; boucles muettes sans son.
+- Aucun secret ni donnée confidentielle dans le dépôt ; le numéro de téléphone n’est pas affiché.
 
 ## Limites connues
 
-- Les images extraites du PDF font au plus 800 px de large : elles sont nettes à taille de vignette mais pas pour de très grands écrans. Remplacer par les originaux dès que possible.
-- Le contenu est généré par JavaScript depuis `data.js` : sans JavaScript, seule la coordonnée e-mail est affichée.
+- Quelques images issues du PDF sont en basse définition : voir AMELIORATIONS.md.
+- Le contenu est généré par JavaScript : sans JavaScript, seule l’adresse e-mail s’affiche.
+- La traduction anglaise est rédigée à la main : à relire.
+
+## CV
+
+Le CV n’est **pas** publié sur le site (le téléphone n’y est jamais affiché). Le PDF est rangé dans `sources/cv/`. Tout PDF éventuellement publié dans `assets/docs/` ne doit contenir aucun numéro de téléphone (texte, lien ou métadonnées).

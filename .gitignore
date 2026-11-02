@@ -63,3 +63,9 @@ rushes/
 *.mov
 *.mp4
 *.wav
+
+# Les boucles et vidéos optimisées du site restent publiées
+!assets/video/*.mp4
+
+# Mémo privé (visuels et chiffres à retrouver) : jamais publié
+AMELIORATIONS.md
