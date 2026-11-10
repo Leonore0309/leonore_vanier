@@ -380,7 +380,7 @@ window.SITE_EN = {
               cover: { alt: "Cover of Les disparues de la crypte, by Mélodie Miller: a little girl runs through a dark crypt." },
               listen: { label: "Listen on Audible" }
             },
-            { title: "Book 3", series: "The Anna Blanchard & Julien Vautrin investigations, book 3", status: "Being written" }
+            { title: "L’enfant du canal", series: "The Anna Blanchard & Julien Vautrin investigations, book 3", status: "In production", cover: { alt: "Cover of L’enfant du canal, by Mélodie Miller: a lit barge glides along a canal at night, an abandoned teddy bear on the bank." } }
           ]
         },
         {

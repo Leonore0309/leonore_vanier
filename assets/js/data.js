@@ -819,13 +819,18 @@ window.SITE = {
               listen: { label: "Écouter sur Audible", url: "https://www.audible.fr/pd/B0HNHT8XD7" }
             },
             {
-              slug: "tome-3",
-              title: "Tome 3",
+              slug: "l-enfant-du-canal",
+              title: "L’enfant du canal",
               author: "Mélodie Miller",
               genre: "Thriller",
               series: "Les enquêtes d’Anna Blanchard & Julien Vautrin, tome 3",
-              status: "En cours d’écriture",
-              cover: null,
+              status: "En cours de production",
+              cover: {
+                src: "assets/img/audio/l-enfant-du-canal.webp",
+                w: 900,
+                h: 900,
+                alt: "Couverture de L’enfant du canal, de Mélodie Miller : une péniche éclairée glisse sur un canal de nuit, un ours en peluche abandonné au bord de l’eau."
+              },
               listen: null
             }
           ]
