@@ -76,6 +76,12 @@
       return p.id === id;
     })[0];
   }
+  // Projets affichés dans la mosaïque générale (mosaic: false : visible seulement dans sa rubrique).
+  function listed() {
+    return S.projects.filter(function (p) {
+      return p.mosaic !== false;
+    });
+  }
   function inCategory(cat) {
     return S.projects.filter(function (p) {
       return p.category === cat;
@@ -300,7 +306,7 @@
   }
 
   function mosaic(extraClass) {
-    return '<ul class="mosaic' + (extraClass ? " " + extraClass : "") + '">' + S.projects.map(tile).join("") + "</ul>";
+    return '<ul class="mosaic' + (extraClass ? " " + extraClass : "") + '">' + listed().map(tile).join("") + "</ul>";
   }
 
   // Adresse de la vidéo : champ `url`, sinon déduite du type et de l’identifiant.
@@ -421,9 +427,10 @@
   }
 
   function projectNav(p) {
-    var i = S.projects.indexOf(p);
-    var prev = S.projects[(i + S.projects.length - 1) % S.projects.length];
-    var next = S.projects[(i + 1) % S.projects.length];
+    var list = p.mosaic === false ? S.projects : listed();
+    var i = list.indexOf(p);
+    var prev = list[(i + list.length - 1) % list.length];
+    var next = list[(i + 1) % list.length];
     function item(q, dir, label) {
       return (
         '<li class="pnav__' + dir + '"><a href="' + projectUrl(q) + '"><span class="pnav__dir">' + esc(label) +
@@ -769,7 +776,7 @@
       '<div class="page-head__main"><p class="eyebrow">' + esc(UI.section) + "</p><h1>" + esc(S.nav[5].label) + "</h1>" +
       '<p class="page-head__format">' + esc(a.intro) + "</p>" +
       '<p class="page-head__link"><a class="link-arrow" href="#demo">' + esc(UI.demoLink) + "</a></p></div>" +
-      '<div class="page-head__side"><ul class="rep-inline" aria-label="' + esc(UI.representation) + '">' + rep(a.agent) + rep(a.adAgent) + "</ul>" +
+      '<div class="page-head__side"><ul class="rep-inline" aria-label="' + esc(UI.representation) + '">' + rep(a.agent) + rep(a.adAgent) + (a.adAgent2 ? rep(a.adAgent2) : "") + "</ul>" +
       '<p class="muted">' + esc(a.cvNote) + "</p></div></header>" +
       '<section aria-labelledby="por"><h2 id="por" class="sr-only">' + esc(UI.portraits) + "</h2>" +
       '<ul class="portraits portraits--large">' + large.map(function (x, i) { return portrait(x, i === 0); }).join("") + "</ul>" +

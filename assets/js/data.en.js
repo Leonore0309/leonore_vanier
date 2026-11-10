@@ -16,8 +16,8 @@ window.SITE_EN = {
     { label: "About" },
     { label: "Fiction" },
     { label: "Audio" },
-    { label: "AI" },
     { label: "Live performance" },
+    { label: "AI" },
     { label: "Acting" },
     { label: "Contact" }
   ],
@@ -154,11 +154,11 @@ window.SITE_EN = {
       status: "Project in progress",
       tile: { images: [{ alt: "Still from ADAM: a man in a long green coat standing in a street at night, blurred in motion." }] },
       hero: { image: { alt: "Still from ADAM: a man in a long green coat standing in a street at night, blurred in motion." } },
-      galleryFirst: { alt: "Still from ADAM: close-up on a young man’s profile, his face lit by a warm light.", caption: "Photo: @bidounini" },
+      galleryFirst: { alt: "Still from ADAM: close-up on the profile of a bearded young man, his face lit by a warm light.", caption: "Photo: FeatureProd" },
       gallery: [
-        { alt: "Still from ADAM: a man in a long green coat standing in a street at night, blurred in motion.", caption: "Photo: @bidounini" },
+        { alt: "Still from ADAM: a face in profile, almost entirely in shadow, light grazing the nose and lips.", caption: "Photo: FeatureProd" },
         { alt: "Still from ADAM: a hand holding a pincushion with colourful pin heads.", caption: "Photo: @bidounini" },
-        { alt: "Still from ADAM: a man and a woman in profile, side by side in the dark.", caption: "Photo: @bidounini" }
+        { alt: "Still from ADAM: a young man in a grey shirt in profile in the foreground; a blurred woman stands in a doorway.", caption: "Photo: FeatureProd" }
       ],
       credits: [
         { label: "Format", value: "Mini-series" },
@@ -168,6 +168,48 @@ window.SITE_EN = {
         { label: "My role", value: "Production coordinator · Assistant director" },
         { label: "Photos" },
         { label: "Cast and crew" }
+      ]
+    },
+
+    /* ---- Matriochka ---- */
+    {
+      id: "matriochka",
+      format: "Short film · 2026 · 7 min",
+      role: "Production manager",
+      description:
+        "Matriochka, a short fiction film (2026, 7 min) directed by Marianne Font as part of the Klach! competition of the Paris Court Devant Festival. Léonore Vanier is its production manager.",
+      synopsis: "The film explores the links between transmission, memory and female heritage through an intimate, mysterious atmosphere in which natural spaces (parks, forests, woods, etc.) play a central part. They become a space of passage, memory and transformation.",
+      method: "Production management: production budget, liaison with the directing, camera and logistics teams · Permits: shooting in forests and natural spaces, image rights.",
+      methodNote: "Klach! competition, which promotes the visibility of people with disabilities: the lead role is given to a person with a disability. Each film is conceived, shot and edited within one month.",
+      status: "Production: November 2026",
+      tile: { images: [{ alt: "Matriochka mood board: a collage of film stills and portraits of women, parks and forests, with the title “Matriocka Mood Board” in the centre." }] },
+      hero: { image: { alt: "Matriochka mood board: a collage of film stills and portraits of women, parks and forests, with the title “Matriocka Mood Board” in the centre." } },
+      stats: [
+        { value: "€3k", label: "production budget" },
+        { value: "14 people", label: "in the team" },
+        { value: "2 days", label: "of shooting in natural settings" },
+        { value: "1 month", label: "from writing to final cut" }
+      ],
+      credits: [
+        { label: "Format", value: "Short fiction film, 2026" },
+        { label: "Running time", value: "7 minutes" },
+        { label: "Competition", value: "Klach! · Paris Court Devant Festival" },
+        { label: "Direction · Screenplay" },
+        { label: "Screenplay collaboration" },
+        { label: "Script doctoring" },
+        { label: "Production management" },
+        { label: "Assistant direction" },
+        { label: "Script supervisor" },
+        { label: "Cinematography" },
+        { label: "Cast" },
+        { label: "Sound" },
+        { label: "Costumes" },
+        { label: "Make-up" },
+        { label: "Unit management" },
+        { label: "Editing" },
+        { label: "Music" },
+        { label: "Colour grading" },
+        { label: "Mixing" }
       ]
     },
 
@@ -508,6 +550,7 @@ window.SITE_EN = {
     },
     agent: { label: "My agent" },
     adAgent: { label: "Commercials agent" },
+    adAgent2: { label: "Commercials agent" },
     cvNote: "My artistic profile is available on my agent’s page."
   },
 

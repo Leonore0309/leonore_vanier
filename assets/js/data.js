@@ -52,8 +52,8 @@ window.SITE = {
     { id: "a-propos", label: "À propos", path: "a-propos/" },
     { id: "fiction", label: "Fiction", path: "fiction/" },
     { id: "audio", label: "Audio", path: "audio/" },
-    { id: "ia", label: "IA", path: "ia/" },
     { id: "spectacles-vivants", label: "Spectacles vivants", path: "spectacles-vivants/" },
+    { id: "ia", label: "IA", path: "ia/" },
     { id: "acting", label: "Acting", path: "acting/" },
     { id: "contacts", label: "Contacts", path: "contacts/" }
   ],
@@ -298,10 +298,10 @@ window.SITE = {
       gallery: [
         {
           src: "assets/img/adam/adam-2.webp",
-          w: 1011,
-          h: 1485,
-          alt: "Image d’ADAM : un homme en long manteau vert se tient dans une rue la nuit, image floue en mouvement.",
-          caption: "Photo : @bidounini"
+          w: 900,
+          h: 1600,
+          alt: "Image d’ADAM : visage de profil presque entièrement dans l’ombre, lumière rasante sur le nez et les lèvres.",
+          caption: "Photo : FeatureProd"
         },
         {
           src: "assets/img/adam/adam-3.webp",
@@ -312,18 +312,18 @@ window.SITE = {
         },
         {
           src: "assets/img/adam/adam-4.webp",
-          w: 972,
-          h: 1491,
-          alt: "Image d’ADAM : un homme et une femme de profil, côte à côte dans la pénombre.",
-          caption: "Photo : @bidounini"
+          w: 900,
+          h: 1600,
+          alt: "Image d’ADAM : un jeune homme en chemise grise, de profil au premier plan ; une femme floue se tient dans l’embrasure d’une porte.",
+          caption: "Photo : FeatureProd"
         }
       ],
       galleryFirst: {
         src: "assets/img/adam/adam-1.webp",
-        w: 1068,
-        h: 1530,
-        alt: "Image d’ADAM : gros plan sur le profil d’un jeune homme, visage éclairé par une lumière chaude.",
-        caption: "Photo : @bidounini"
+        w: 900,
+        h: 1600,
+        alt: "Image d’ADAM : gros plan sur le profil d’un jeune homme barbu, visage éclairé par une lumière chaude.",
+        caption: "Photo : FeatureProd"
       },
       credits: [
         { label: "Format", value: "Mini-série" },
@@ -331,8 +331,76 @@ window.SITE = {
         { label: "Production", value: "FeatureProd" },
         { label: "Statut", value: "En cours · sortie prévue fin 2026" },
         { label: "Mon rôle", value: "Chargée de production · Assistante réalisatrice" },
-        { label: "Photos", value: "@bidounini" },
+        { label: "Photos", value: "@bidounini · FeatureProd" },
         { label: "Distribution et équipe", value: null, todo: "crédits d’équipe autorisés à la publication" }
+      ],
+      links: []
+    },
+
+    /* ---- Matriochka (hors mosaïque : visible dans la rubrique Fiction ; retirer mosaic: false pour l’afficher partout) ---- */
+    {
+      id: "matriochka",
+      category: "fiction",
+      slug: "matriochka",
+      mosaic: false,
+      title: "Matriochka",
+      format: "Court-métrage · 2026 · 7 min",
+      role: "Directrice de production",
+      description:
+        "Matriochka, court-métrage de fiction (2026, 7 min) réalisé par Marianne Font dans le cadre du concours Klach ! du Festival Paris Court Devant. Léonore Vanier en est la directrice de production.",
+      synopsis: "Le film explore les liens entre transmission, mémoire et héritage féminin à travers une atmosphère intime et mystérieuse, où les espaces naturels (parcs, forêts, bois, etc.) occupent une place centrale. Ils deviennent un espace de passage, de mémoire et de transformation.",
+      method: "Direction de production : budget de production, lien avec les équipes réalisation, image et régie · Autorisations : tournage en forêts et espaces naturels, droit à l’image.",
+      methodNote: "Concours Klach !, qui promeut la visibilité des personnes en situation de handicap : le premier rôle est confié à une personne en situation de handicap. Chaque film est conçu, tourné et monté en un mois.",
+      status: "Production : novembre 2026",
+      tile: {
+        ratio: "16 / 9",
+        focus: "50% 50%",
+        images: [
+          {
+            src: "assets/img/matriochka/moodboard.webp",
+            w: 682,
+            h: 1024,
+            alt: "Planche d’inspiration de Matriochka : collage d’images de films et de portraits de femmes, de parcs et de forêts, avec au centre le titre « Matriocka Mood Board »."
+          }
+        ]
+      },
+      hero: {
+        type: "image",
+        image: {
+          src: "assets/img/matriochka/moodboard.webp",
+          w: 682,
+          h: 1024,
+          alt: "Planche d’inspiration de Matriochka : collage d’images de films et de portraits de femmes, de parcs et de forêts, avec au centre le titre « Matriocka Mood Board »."
+        }
+      },
+      stats: [
+        { value: "3 k€", label: "de budget de production" },
+        { value: "14 personnes", label: "dans l’équipe" },
+        { value: "2 jours", label: "de tournage en milieu naturel" },
+        { value: "1 mois", label: "de l’écriture au montage final" }
+      ],
+      awards: [],
+      gallery: [],
+      credits: [
+        { label: "Format", value: "Court-métrage de fiction, 2026" },
+        { label: "Durée", value: "7 minutes" },
+        { label: "Concours", value: "Klach ! · Festival Paris Court Devant" },
+        { label: "Réalisation · Scénario", value: "Marianne Font" },
+        { label: "Collaboration au scénario", value: "Jonathan Israël" },
+        { label: "Script doctoring", value: "Luca Minardi" },
+        { label: "Direction de production", value: "Léonore Vanier" },
+        { label: "Assistanat à la réalisation", value: "Marie Lager" },
+        { label: "Scripte", value: "Ettie Lechopier" },
+        { label: "Direction de la photographie", value: "Denez Pithois" },
+        { label: "Interprétation", value: "Claire Pitot, Anthony Rhino, Carole André" },
+        { label: "Son", value: "Margaux Roux" },
+        { label: "Costumes", value: "Solenne Azam" },
+        { label: "Maquillage", value: "Lucie Chiron" },
+        { label: "Régie générale", value: "Rebecca Gournay" },
+        { label: "Montage", value: "Julia Camps" },
+        { label: "Musique", value: "Antoine Martre" },
+        { label: "Étalonnage", value: "Aladin" },
+        { label: "Mixage", value: "Anthony Ferrero" }
       ],
       links: []
     },
@@ -1108,6 +1176,11 @@ window.SITE = {
       label: "Agent publicité",
       name: "Rebecca Artists",
       url: "https://www.rebecca-artists.fr/index.htm"
+    },
+    adAgent2: {
+      label: "Agent publicité",
+      name: "Dynamite Agency",
+      url: "https://www.agency-dynamite.fr/"
     },
     cvNote: "Mon profil artistique est disponible sur la page de mon agent."
   },
