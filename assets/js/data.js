@@ -191,7 +191,7 @@ window.SITE = {
           alt: "Le Contrôle sanitaire : deux femmes face à face dans une chambre, l’une rejetant ses cheveux en arrière."
         }
       },
-      stats: [{ value: "33 000 vues", label: "sur YouTube (octobre 2026)" }],
+      stats: [{ value: "35 000 vues", label: "sur YouTube (octobre 2026)" }],
       awards: [
         {
           label: "Mention spéciale",
