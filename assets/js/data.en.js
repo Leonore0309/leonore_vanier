@@ -113,7 +113,7 @@ window.SITE_EN = {
         title: "Le Contrôle sanitaire, short film",
         poster: { alt: "Le Contrôle sanitaire: two women face to face in a bedroom, one of them tossing her hair back." }
       },
-      stats: [{ value: "33,000 views", label: "on YouTube (October 2026)" }],
+      stats: [{ value: "35,000 views", label: "on YouTube (October 2026)" }],
       awards: [
         { label: "Special mention", detail: "for “the quality of the writing and of the performances”", source: "Prix Florent Image 2026" },
         { label: "Official selection 2026", detail: "Plus c’est court, plus c’est bon · KINO POP Festival · CAST Festival" }
